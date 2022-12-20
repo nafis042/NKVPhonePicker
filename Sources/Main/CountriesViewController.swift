@@ -101,8 +101,18 @@ public final class CountriesViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.sizeToFit()
         searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.tintColor = UIColor.black
-        searchController.searchBar.backgroundColor = UIColor.white
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.tintColor = UIColor.label
+        } else {
+            // Fallback on earlier versions
+            searchController.searchBar.tintColor = UIColor.black
+        }
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.backgroundColor = UIColor.systemBackground
+        } else {
+            // Fallback on earlier versions
+            searchController.searchBar.backgroundColor = .white
+        }
         searchController.extendedLayoutIncludesOpaqueBars = true
 
         definesPresentationContext = true
@@ -117,7 +127,12 @@ public final class CountriesViewController: UITableViewController {
     private func setupTableView() {
         tableView.sectionIndexTrackingBackgroundColor = UIColor.clear
         tableView.sectionIndexBackgroundColor = UIColor.clear
-        tableView.sectionIndexColor = UIColor.black
+        if #available(iOS 13.0, *) {
+            tableView.sectionIndexColor = UIColor.label
+        } else {
+            // Fallback on earlier versions
+            tableView.sectionIndexColor = UIColor.black
+        }
         tableView.tableHeaderView = searchController.searchBar
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.scrollsToTop = true

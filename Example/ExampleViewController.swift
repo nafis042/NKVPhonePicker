@@ -19,7 +19,7 @@ class ExampleViewController: UIViewController {
         
         topTextField.phonePickerDelegate = self
         topTextField.countryPickerDelegate = self
-        topTextField.favoriteCountriesLocaleIdentifiers = ["RU", "ER", "JM"]
+        topTextField.favoriteCountriesLocaleIdentifiers = ["BD", "US", "GB"]
         
         /// Uncomment next line to try different settings
 //        topTextField.rightToLeftOrientation = true
@@ -29,14 +29,15 @@ class ExampleViewController: UIViewController {
 //        NKVPhonePickerTextField.samePhoneExtensionCountryPriorities = ["1": "US"]
         
         // Setting initial custom country
-        let country = Country.country(for: NKVSource(countryCode: "RU"))
+        let country = Country.country(for: NKVSource(countryCode: "BD"))
         topTextField.country = country
+       
         
         // Setting to let the flag be changed only with code
 //        topTextField.isFlagFixed = true
 
         // Setting custom format pattern for some countries
-        topTextField.customPhoneFormats = ["RU" : "# ### ### ## ##",
+        topTextField.customPhoneFormats = ["BD" : "### #### ### ###",
                                            "IN": "## #### #########"]
         
         // You can also add NKVPhonePickerTextField programmatically ;)
